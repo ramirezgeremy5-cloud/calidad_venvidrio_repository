@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venvidrio — Control de Calidad</title>
+  <link rel="stylesheet" href="/Control de Calidad Venvidrio/css/Login_styless.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="login-root">
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+    <div class="glass-lines"></div>
+
+    <div class="card" id="loginCard">
+
+      <!-- Overlay de éxito -->
+      <div class="success-overlay" id="successOverlay">
+        <div class="check-circle">
+          <i class="ti ti-check" aria-hidden="true"></i>
+        </div>
+        <p class="success-text">Acceso concedido</p>
+        <p class="success-sub">Cargando sistema...</p>
+      </div>
+
+      <!-- Logo -->
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="10" height="10" rx="2" fill="white" opacity="0.9"/>
+            <rect x="16" y="2" width="10" height="10" rx="2" fill="white" opacity="0.6"/>
+            <rect x="2" y="16" width="10" height="10" rx="2" fill="white" opacity="0.6"/>
+            <rect x="16" y="16" width="10" height="10" rx="2" fill="white" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="brand-name">Venvidrio</div>
+        <div class="brand-sub">Control de Calidad</div>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Campo: Usuario -->
+      <div class="field-group">
+        <label class="field-label" for="username">Usuario</label>
+        <div class="field-wrapper">
+          <i class="ti ti-user field-icon" aria-hidden="true"></i>
+          <input class="field-input" id="username" type="text" placeholder="nombre.apellido" autocomplete="username" />
+        </div>
+      </div>
+
+      <!-- Campo: Contraseña -->
+      <div class="field-group">
+        <label class="field-label" for="password">Contraseña</label>
+        <div class="field-wrapper">
+          <i class="ti ti-lock field-icon" aria-hidden="true"></i>
+          <input class="field-input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+          <button class="pw-toggle" id="pwToggle" type="button" aria-label="Mostrar contraseña">
+            <i class="ti ti-eye" id="pwIcon" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Campo: Rol -->
+      <div class="field-group">
+        <label class="field-label" for="role">Rol</label>
+        <div class="field-wrapper">
+          <i class="ti ti-shield-check field-icon" aria-hidden="true"></i>
+          <select class="field-select" id="role">
+            <option value="" disabled selected>Seleccionar rol</option>
+            <option value="inspector">Inspector de Calidad</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="auditor">Auditor</option>
+            <option value="admin">Administrador</option>
+            <option value="operador">Operador</option>
+          </select>
+          <i class="ti ti-chevron-down select-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <!-- Botón -->
+      <button class="submit-btn" id="submitBtn" type="button">
+        <span class="btn-content">
+          <span class="loading-ring"></span>
+          <i class="ti ti-login btn-icon" aria-hidden="true"></i>
+          <span class="btn-text">Iniciar sesión</span>
+        </span>
+      </button>
+
+      <div class="footer-note">
+        Sistema protegido &nbsp;·&nbsp; <strong>Venvidrio S.A.</strong>
+      </div>
+
+    </div><!-- /card -->
+  </div><!-- /login-root -->
+
+  <script src="Control de Calidad Venvidrio/js/Login_app.js"></script>
+</body>
+</html>

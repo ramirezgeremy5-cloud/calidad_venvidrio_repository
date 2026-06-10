@@ -1,0 +1,197 @@
+/* auditoria.css */
+
+.anim-card { animation: fade-up 0.5s ease both; }
+
+.aud-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.aud-right { display: flex; flex-direction: column; }
+
+/* ---- Barra de progreso ---- */
+.aud-progress-track {
+  height: 10px;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.aud-progress-fill {
+  height: 100%;
+  background: var(--navy);
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1), background 0.4s ease;
+}
+
+.aud-progress-fill.complete { background: var(--success); }
+
+/* ---- Checklist ---- */
+.checklist-body {
+  padding: 1rem 0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.chk-section {
+  padding: 0 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.chk-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-hint);
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.chk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  position: relative;
+}
+
+.chk-item:hover { background: var(--off-white); border-color: var(--border); }
+
+.chk-item.ok     { background: #f0fdf4; border-color: #bbf7d0; }
+.chk-item.nc     { background: #fef2f2; border-color: #fecaca; }
+.chk-item.na     { background: var(--off-white); border-color: var(--border); opacity: 0.6; }
+
+.chk-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--border-dark);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all var(--transition);
+  margin-top: 1px;
+}
+
+.chk-item.ok .chk-check { background: var(--success); border-color: var(--success); color: white; }
+.chk-item.nc .chk-check { background: var(--danger); border-color: var(--danger); color: white; }
+.chk-item.na .chk-check { background: var(--border); border-color: var(--border); }
+
+.chk-text { flex: 1; }
+
+.chk-label {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.chk-meta {
+  font-size: 11px;
+  color: var(--text-hint);
+  margin-top: 2px;
+}
+
+.chk-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.chk-item:hover .chk-actions { opacity: 1; }
+
+.chk-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: white;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  font-weight: 600;
+}
+
+.chk-btn.ok-btn  { color: var(--success); }
+.chk-btn.nc-btn  { color: var(--danger); }
+.chk-btn.na-btn  { color: var(--text-hint); }
+
+.chk-btn:hover.ok-btn  { background: #d1fae5; border-color: var(--success); }
+.chk-btn:hover.nc-btn  { background: #fee2e2; border-color: var(--danger); }
+.chk-btn:hover.na-btn  { background: var(--off-white); }
+
+/* Footer de checklist */
+.card-footer-row {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* No conformidades */
+.nc-item {
+  padding: 12px 1.5rem;
+  border-bottom: 1px solid var(--border);
+  animation: slide-in-right 0.4s ease both;
+}
+
+.nc-item:last-child { border-bottom: none; }
+
+.nc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.nc-title { font-size: 13px; font-weight: 600; color: var(--navy); }
+
+.nc-desc { font-size: 12px; color: var(--text-muted); }
+
+.nc-meta {
+  font-size: 11px;
+  color: var(--text-hint);
+  margin-top: 4px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Toast */
+.toast-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.toast-success.show { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .aud-layout { grid-template-columns: 1fr; }
+}

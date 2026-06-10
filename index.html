@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Calidad de Venvidrio</title>
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+    <!-- ==========================================
+         SIDEBAR
+    ========================================== -->
+    <nav id="sidebar">
+
+        <div class="brand">
+            <div class="brand-title">Venvidrio</div>
+            <div class="brand-sub">Control de Calidad</div>
+        </div>
+
+        <div class="nav-item active"
+             onclick="nav('dashboard')"
+             data-page="dashboard">
+            <i class="ti ti-layout-dashboard"></i>
+            Dashboard
+        </div>
+
+        <div class="nav-item"
+             onclick="nav('produccion')"
+             data-page="produccion">
+            <i class="ti ti-package"></i>
+            <a href="produccion.html">Produccion</a>
+        </div>
+
+        <div class="nav-item"
+             onclick="nav('defectos')"
+             data-page="defectos">
+            <i class="ti ti-alert-triangle"></i>
+            <a href="defectos.html">Defectos</a>
+        </div>
+
+        <div class="nav-item"
+             onclick="nav('etiquetas')"
+             data-page="etiquetas">
+            <i class="ti ti-tag"></i>
+            <a href="etiquetas.html">Etiquetas & QR</a>
+        </div>
+
+        <div class="nav-item"
+             onclick="nav('auditoria')"
+             data-page="auditoria">
+            <i class="ti ti-clipboard-check"></i>
+            <a href="auditoria.html"></a>
+        </div>
+
+    </nav>
+
+    <!-- ==========================================
+         CONTENIDO
+    ========================================== -->
+    <main id="main">
+
+        <!-- ==========================================
+             DASHBOARD
+        ========================================== -->
+        <section id="page-dashboard" class="page active">
+
+            <div class="page-title">
+                Resumen General
+            </div>
+
+            <div class="kpi-grid">
+
+                <div class="kpi">
+                    <div class="kpi-val">1,248</div>
+                    <div class="kpi-lbl">Unidades Producidas</div>
+                    <div class="kpi-badge green-badge">
+                        +4.2%
+                    </div>
+                </div>
+
+                <div class="kpi">
+                    <div class="kpi-val">94.6%</div>
+                    <div class="kpi-lbl">Producción Apta</div>
+                    <div class="kpi-badge green-badge">
+                        Meta alcanzada
+                    </div>
+                </div>
+
+                <div class="kpi">
+                    <div class="kpi-val">5.4%</div>
+                    <div class="kpi-lbl">Defectos</div>
+                    <div class="kpi-badge amber-badge">
+                        En control
+                    </div>
+                </div>
+
+                <div class="kpi">
+                    <div class="kpi-val">12</div>
+                    <div class="kpi-lbl">Días de Producción</div>
+                    <div class="kpi-badge">
+                        Activa
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    Producción por Semana
+                </div>
+
+                <div id="bar-chart">
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">1080</div>
+                        <div class="bar" style="height:72px;"></div>
+                        <div class="bar-lbl">S1</div>
+                    </div>
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">1145</div>
+                        <div class="bar" style="height:76px;"></div>
+                        <div class="bar-lbl">S2</div>
+                    </div>
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">990</div>
+                        <div class="bar" style="height:66px;"></div>
+                        <div class="bar-lbl">S3</div>
+                    </div>
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">1200</div>
+                        <div class="bar" style="height:80px;"></div>
+                        <div class="bar-lbl">S4</div>
+                    </div>
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">1180</div>
+                        <div class="bar" style="height:79px;"></div>
+                        <div class="bar-lbl">S5</div>
+                    </div>
+
+                    <div class="bar-wrap">
+                        <div class="bar-val">1248</div>
+                        <div class="bar" style="height:84px;"></div>
+                        <div class="bar-lbl">S6</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             PRODUCCIÓN
+        ========================================== -->
+        <section id="page-produccion" class="page">
+
+            <div class="row-flex">
+
+                <div class="page-title">
+                    Registro de Producción
+                </div>
+
+                <button class="btn btn-primary"
+                        onclick="addProd()">
+                    Nueva Corrida
+                </button>
+
+            </div>
+
+            <div id="prod-form-card"
+                 class="card"
+                 style="display:none;">
+
+                <div class="card-title">
+                    Nueva Corrida
+                </div>
+
+                <input type="text"
+                       id="f-molde"
+                       placeholder="Molde">
+
+                <br><br>
+
+                <input type="date"
+                       id="f-inicio">
+
+                <br><br>
+
+                <input type="date"
+                       id="f-fin">
+
+                <br><br>
+
+                <select id="f-estado">
+                    <option>Activa</option>
+                    <option>Completa</option>
+                    <option>Revisión</option>
+                </select>
+
+                <br><br>
+
+                <button class="btn btn-primary"
+                        onclick="saveProd()">
+                    Guardar
+                </button>
+
+                <button class="btn btn-outline"
+                        onclick="cancelProd()">
+                    Cancelar
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <table id="prod-table">
+
+                    <tr>
+                        <th>Corrida</th>
+                        <th>Molde</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Aptas</th>
+                        <th>Defectos</th>
+                        <th>Estado</th>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             DEFECTOS
+        ========================================== -->
+        <section id="page-defectos" class="page">
+
+            <div class="row-flex">
+
+                <div class="page-title">
+                    Registro de Defectos
+                </div>
+
+                <button class="btn btn-primary"
+                        onclick="addDefecto()">
+                    Nuevo Defecto
+                </button>
+
+            </div>
+
+            <div id="def-form-card"
+                 class="card"
+                 style="display:none;">
+
+                <select id="d-corrida">
+                    <option>CR-001</option>
+                </select>
+
+                <br><br>
+
+                <input type="text"
+                       id="d-tipo"
+                       placeholder="Tipo de defecto">
+
+                <br><br>
+
+                <input type="number"
+                       id="d-cant"
+                       value="1">
+
+                <br><br>
+
+                <select id="d-sev">
+                    <option>Leve</option>
+                    <option>Moderado</option>
+                    <option>Crítico</option>
+                </select>
+
+                <br><br>
+
+                <textarea id="d-obs"
+                          placeholder="Observaciones"></textarea>
+
+                <br><br>
+
+                <button class="btn btn-primary"
+                        onclick="saveDef()">
+                    Registrar
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <table id="def-table">
+
+                    <tr>
+                        <th>Corrida</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Severidad</th>
+                        <th>Observaciones</th>
+                        <th>Acción</th>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             ETIQUETAS
+        ========================================== -->
+        <section id="page-etiquetas" class="page">
+
+            <div class="page-title">
+                Etiquetas y Código QR
+            </div>
+
+            <div class="card">
+
+                <input type="text"
+                       id="lbl-prod"
+                       value="Botella Venvidrio"
+                       oninput="updateLabel()">
+
+                <br><br>
+
+                <input type="text"
+                       id="lbl-lote"
+                       value="L001"
+                       oninput="updateLabel()">
+
+                <br><br>
+
+                <input type="text"
+                       id="lbl-comp"
+                       value="Vidrio reciclado"
+                       oninput="updateLabel()">
+
+                <br><br>
+
+                <input type="text"
+                       id="lbl-peso"
+                       value="500 g"
+                       oninput="updateLabel()">
+
+                <br><br>
+
+                <input type="date"
+                       id="lbl-fecha">
+
+                <br><br>
+
+                <select id="lbl-estado"
+                        onchange="updateLabel()">
+
+                    <option>Producción Apta</option>
+                    <option>No Apta</option>
+                    <option>En Revisión</option>
+
+                </select>
+
+                <br><br>
+
+                <button class="btn btn-primary"
+                        onclick="generateQR()">
+                    Generar QR
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h3 id="tp-prod">
+                    Botella Venvidrio
+                </h3>
+
+                <p>
+                    Lote:
+                    <span id="tp-lote"></span>
+                </p>
+
+                <p>
+                    Composición:
+                    <span id="tp-comp"></span>
+                </p>
+
+                <p>
+                    Peso:
+                    <span id="tp-peso"></span>
+                </p>
+
+                <span id="tp-estado"
+                      class="chip chip-green">
+                </span>
+
+                <br><br>
+
+                <div id="qr-canvas"></div>
+
+                <p id="qr-note"></p>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             AUDITORÍA
+        ========================================== -->
+        <section id="page-auditoria" class="page">
+
+            <div class="page-title">
+                Auditoría de Calidad
+            </div>
+
+            <div class="card">
+
+                <div id="audit-pct">
+                    0 / 4
+                </div>
+
+                <div class="progress-bar">
+                    <div id="audit-fill"
+                         class="progress-fill">
+                    </div>
+                </div>
+
+                <br>
+
+                <label>
+                    <input type="checkbox"
+                           class="audit-check"
+                           onchange="updateAudit()">
+                    Área limpia
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox"
+                           class="audit-check"
+                           onchange="updateAudit()">
+                    Producto identificado
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox"
+                           class="audit-check"
+                           onchange="updateAudit()">
+                    Lote registrado
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox"
+                           class="audit-check"
+                           onchange="updateAudit()">
+                    Inspección aprobada
+                </label>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- QRCode -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

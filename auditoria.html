@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditoría — Venvidrio CQ</title>"
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/auditoria.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand">VENV<span>IDRIO</span></div>
+  <ul class="nav-links">
+    <li><a href="produccion.html"><i class="ti ti-building-factory-2"></i> Producción</a></li>
+    <li><a href="defectos.html"><i class="ti ti-alert-triangle"></i> Defectos</a></li>
+    <li><a href="etiquetas.html"><i class="ti ti-qrcode"></i> Etiquetas y QR</a></li>
+    <li><a href="auditoria.html" class="active"><i class="ti ti-clipboard-check"></i> Auditoría</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar">JR</div>
+    <span class="nav-username">J. Ramírez</span>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="page-header">
+    <h1>Auditoría de Calidad</h1>
+    <p>Inspecciones, listas de verificación y trazabilidad de cumplimiento normativo</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card" style="animation-delay:0.05s">
+      <div class="stat-label">Auditorías Mes</div>
+      <div class="stat-value">18</div>
+      <div class="stat-sub">3 en curso</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.1s">
+      <div class="stat-label">Cumplimiento</div>
+      <div class="stat-value success">94%</div>
+      <div class="stat-sub">+2% vs. mes anterior</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.15s">
+      <div class="stat-label">No Conformidades</div>
+      <div class="stat-value danger">6</div>
+      <div class="stat-sub">2 críticas abiertas</div>
+    </div>
+    <div class="stat-card" style="animation-delay:0.2s">
+      <div class="stat-label">Acciones Correctivas</div>
+      <div class="stat-value warning">9</div>
+      <div class="stat-sub">4 en seguimiento</div>
+    </div>
+  </div>
+
+  <div class="aud-layout">
+
+    <!-- Checklist de auditoría -->
+    <div class="card anim-card" style="animation-delay:0.2s">
+      <div class="card-header">
+        <div class="card-title"><i class="ti ti-checklist"></i> Lista de Verificación</div>
+        <div class="flex gap-2 items-center">
+          <span class="badge badge-info" id="badge-progreso">0 / 0</span>
+          <select id="sel-checklist" style="padding:5px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:12px;font-family:var(--font-body);outline:none">
+            <option value="proceso">Proceso de Templado</option>
+            <option value="corte">Mesa de Corte</option>
+            <option value="inspeccion">Inspección Final</option>
+            <option value="empaque">Empaque y Despacho</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-body" style="padding:0">
+
+        <!-- Barra de progreso general -->
+        <div style="padding:1rem 1.5rem 0">
+          <div class="aud-progress-track">
+            <div class="aud-progress-fill" id="aud-progress-fill" style="width:0%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-hint);margin-top:4px">
+            <span>Progreso de auditoría</span>
+            <span id="pct-label">0%</span>
+          </div>
+        </div>
+
+        <div class="checklist-body" id="checklist-body">
+          <!-- generado por JS -->
+        </div>
+
+      </div>
+      <div class="card-footer-row">
+        <button class="btn btn-outline btn-sm" id="btn-reset-chk"><i class="ti ti-refresh"></i> Reiniciar</button>
+        <button class="btn btn-primary" id="btn-cerrar-aud"><i class="ti ti-circle-check"></i> Cerrar Auditoría</button>
+      </div>
+    </div>
+
+    <!-- Panel derecho -->
+    <div class="aud-right">
+
+      <!-- Nueva auditoría -->
+      <div class="card anim-card" style="animation-delay:0.25s">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-plus"></i> Nueva Auditoría</div>
+        </div>
+        <div class="card-body">
+          <div class="field">
+            <label>Tipo de Auditoría</label>
+            <select id="a-tipo">
+              <option>Interna de Proceso</option>
+              <option>Inspección de Producto</option>
+              <option>Auditoría de Sistema</option>
+              <option>Auditoría de Proveedor</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Área / Línea</label>
+            <select id="a-area">
+              <option>Línea A — Corte</option>
+              <option>Línea B — Templado</option>
+              <option>Línea C — Laminado</option>
+              <option>Línea D — Serigrafía</option>
+              <option>Almacén</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Auditor Responsable</label>
+            <input type="text" id="a-auditor" placeholder="Nombre completo" />
+          </div>
+          <div class="field">
+            <label>Norma de Referencia</label>
+            <select id="a-norma">
+              <option>ISO 9001:2015</option>
+              <option>NMX-CC-9001-IMNC-2015</option>
+              <option>NMX-C-175</option>
+              <option>Procedimiento Interno</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Observaciones iniciales</label>
+            <textarea id="a-obs" placeholder="Contexto, alcance o notas previas..."></textarea>
+          </div>
+          <button class="btn btn-primary w-full" id="btn-nueva-aud" style="margin-top:0.25rem">
+            <i class="ti ti-player-play"></i> Iniciar Auditoría
+          </button>
+          <div class="toast-success" id="toast-aud">
+            <i class="ti ti-circle-check"></i> Auditoría iniciada correctamente
+          </div>
+        </div>
+      </div>
+
+      <!-- Últimas no conformidades -->
+      <div class="card anim-card" style="animation-delay:0.3s; margin-top:1rem">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-alert-circle"></i> No Conformidades</div>
+          <span class="badge badge-danger">2 críticas</span>
+        </div>
+        <div id="nc-list" style="padding:0">
+          <!-- generado por JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Historial -->
+  <div class="card anim-card" style="animation-delay:0.4s; margin-top:1.5rem">
+    <div class="card-header">
+      <div class="card-title"><i class="ti ti-history"></i> Historial de Auditorías</div>
+      <button class="btn btn-outline btn-sm"><i class="ti ti-download"></i> Exportar</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Área</th>
+            <th>Auditor</th>
+            <th>Norma</th>
+            <th>Cumplimiento</th>
+            <th>NC</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-aud"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/auditoria.js"></script>
+</body>
+</html>
