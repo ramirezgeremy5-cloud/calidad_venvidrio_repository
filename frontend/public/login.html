@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venvidrio — Control de Calidad</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/Login_styless.css" />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="login-root">
+
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+    <div class="glass-lines"></div>
+
+    <div class="card" id="loginCard">
+
+      <!-- Overlay éxito -->
+      <div class="success-overlay" id="successOverlay">
+        <div class="check-circle">
+          <i class="ti ti-check"></i>
+        </div>
+        <p class="success-text">Acceso concedido</p>
+        <p class="success-sub">Cargando sistema...</p>
+      </div>
+
+      <!-- LOGO -->
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2" fill="white" opacity="0.9"/>
+            <rect x="16" y="2" width="10" height="10" rx="2" fill="white" opacity="0.6"/>
+            <rect x="2" y="16" width="10" height="10" rx="2" fill="white" opacity="0.6"/>
+            <rect x="16" y="16" width="10" height="10" rx="2" fill="white" opacity="0.3"/>
+          </svg>
+        </div>
+
+        <div class="brand-name">Venvidrio</div>
+        <div class="brand-sub">Control de Calidad</div>
+        <div class="divider"></div>
+      </div>
+
+      <!-- USUARIO -->
+      <div class="field-group">
+        <label class="field-label">Usuario</label>
+
+        <div class="field-wrapper">
+          <i class="ti ti-user field-icon"></i>
+
+          <input
+            class="field-input"
+            id="username"
+            type="text"
+            placeholder="nombre.usuario"
+            autocomplete="username"
+          />
+        </div>
+      </div>
+
+      <!-- CONTRASEÑA -->
+      <div class="field-group">
+        <label class="field-label">Contraseña</label>
+
+        <div class="field-wrapper">
+          <i class="ti ti-lock field-icon"></i>
+
+          <input
+            class="field-input"
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+          />
+
+          <button class="pw-toggle" id="pwToggle" type="button">
+            <i class="ti ti-eye" id="pwIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- BOTÓN -->
+      <button class="submit-btn" id="submitBtn" type="button">
+        <span class="btn-content">
+          <span class="loading-ring"></span>
+          <i class="ti ti-login btn-icon"></i>
+          <span class="btn-text">Iniciar sesión</span>
+        </span>
+      </button>
+
+      <div class="footer-note">
+        Sistema protegido · <strong>Venvidrio S.A.</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="../assets/js/login_app.js"></script>
+
+</body>
+</html>
